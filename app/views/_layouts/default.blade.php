@@ -43,6 +43,9 @@
                               <img src="images/slide1.jpg" />
                             </li>
                             <li>
+                              <img src="images/slide1.jpg" />
+                            </li>
+<!--                            <li>
                               <img src="images/slide2.jpg" />
                             </li>
                             <li>
@@ -50,7 +53,7 @@
                             </li>
                             <li>
                               <img src="images/slide4.jpg" />
-                            </li>
+                            </li>-->
                           </ul>
                         </div>
                     </div>
