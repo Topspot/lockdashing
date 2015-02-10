@@ -31,13 +31,24 @@ class AdminProductsController extends \BaseController {
 	 */
 	public function store()
 	{
+            
+           
+
 		$validator = Validator::make($data = Input::all(), Product::$rules);
 
 		if ($validator->fails())
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
-
+                
+                  if (Input::hasFile('image')) {
+                    $file            = Input::file('image');
+                    $destinationPath = public_path().'/img/';
+                    $filename        = str_random(6) . '_' . $file->getClientOriginalName();
+                    $uploadSuccess   = $file->move($destinationPath, $filename);
+                     $data["image"]='/img/'.$filename;
+                }
+              
 		Product::create($data);
 
 		return Redirect::route('admin.products.index');
@@ -65,7 +76,6 @@ class AdminProductsController extends \BaseController {
 	public function edit($id)
 	{
 		$product = Product::find($id);
-
 		return View::make('admin.products.edit', compact('product'));
 	}
 
@@ -76,15 +86,24 @@ class AdminProductsController extends \BaseController {
 	 * @return Response
 	 */
 	public function update($id)
-	{
+	{            
 		$product = Product::findOrFail($id);
-
+             
 		$validator = Validator::make($data = Input::all(), Product::$rules);
 
 		if ($validator->fails())
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
+                if (Input::hasFile('image')) {
+                    $file            = Input::file('image');
+                    $destinationPath = public_path().'/img/';
+                    $filename        = str_random(6) . '_' . $file->getClientOriginalName();
+                    $uploadSuccess   = $file->move($destinationPath, $filename);
+                    $data["image"]='/img/'.$filename;
+                }else{
+                     unset($data['image']);
+                }
 
 		$product->update($data);
 
