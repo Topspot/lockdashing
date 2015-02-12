@@ -3,7 +3,7 @@
 @section('content')
 
 <h1>Categories</h1>
-{{ link_to_route('admin.categories.create', 'Create new Product') }}
+{{ link_to_route('admin.categories.create', 'Create new Product',array(), array('class' => 'btn btn-inverse')) }}
 <div class="row">
         <div class="col-xs-12">
                 <div class="table-responsive">
@@ -47,6 +47,9 @@
                                                                 <a class="red" href="/admin/categories/destroy/<?php echo $category->id ?>">
                                                                         <i class="icon-trash bigger-130"></i>
                                                                 </a>
+<!--                                                                        {{ Form::open(array('route' => array('admin.categories.destroy', $category->id), 'method' => 'delete', 'class' => 'destroy')) }}
+            {{ Form::submit('Delete') }}-->
+
                                                         </div>
 
                                                         <div class="visible-xs visible-sm hidden-md hidden-lg">
@@ -89,6 +92,8 @@
                                         
                                 </tbody>
                         </table>
+                     <?php echo $categories->links(); ?>
+                
                 </div>
         </div>
 </div>

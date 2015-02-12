@@ -9,7 +9,7 @@ class AdminBrandsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$brands = Brand::all();
+		$brands = Brand::paginate(10);
 
 		return View::make('admin.brands.index', compact('brands'));
 	}

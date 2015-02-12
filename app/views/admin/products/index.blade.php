@@ -3,7 +3,8 @@
 @section('content')
 
 <h1>Products</h1>
-{{ link_to_route('admin.products.create', 'Create new Product') }}
+{{ link_to_route('admin.products.create', 'Create new Product',array(), array('class' => 'btn btn-inverse')) }}
+<button class="btn btn-danger" onclick="multipleDelete('Products');"><i class="icon-trash bigger-130"></i> Multiple Delete</button>
 <div class="row">
         <div class="col-xs-12">
                 <div class="table-responsive">
@@ -28,10 +29,10 @@
                                         </tr>
                                 </thead>
 
-                                <tbody>
+                                <tbody class="product-table">
                                     @if(count($products))
                                      @foreach($products as $product)
-                                        <tr>
+                                     <tr data-id="<?php echo $product->id ?>">
                                                 <td class="center">
                                                         <label>
                                                                 <input type="checkbox" class="ace" />
@@ -47,7 +48,7 @@
                                                 <td>{{{ $product->likes }}}</td>
                                                 <td>{{{ $product->star }}}</td>
                                                 <td>{{{ $product->price }}}</td>
-                                                <td>{{{ $product->image }}}</td>
+                                                <td><img src="<?php echo $product->image; ?>" width="50px" height="50px" alt="product"></td>
                                                 <td>{{{ $product->brand_id }}}</td>
                                                 <td>{{{ $product->category_id }}}</td>
 
@@ -58,9 +59,15 @@
                                                                         <i class="icon-pencil bigger-130"></i>
                                                                 </a>
 
-                                                                <a class="red" href="/admin/products/destroy/<?php echo $product->id ?>">
+                                                                <a class="red" href="#" onclick="openModal('Products','<?php echo $product->id; ?>','<?php echo $product->title; ?>');">
                                                                         <i class="icon-trash bigger-130"></i>
                                                                 </a>
+<!--                                                                         <button class="red" onclick="openModal('Products','<?php echo $product->id; ?>','<?php echo $product->title; ?>');">
+                                                                            <i class="icon-trash bigger-130"></i>   
+                                                                        </button>-->
+                                                      
+<!--                                                            {{ Form::open(array('route' => array('admin.products.destroy', $product->id), 'method' => 'delete', 'class' => 'destroy')) }}
+                                                                   {{ Form::submit('Delete') }}-->
                                                         </div>
 
                                                         <div class="visible-xs visible-sm hidden-md hidden-lg">
@@ -103,20 +110,9 @@
                                         
                                 </tbody>
                         </table>
+                    <?php echo $products->links(); ?>
                 </div>
         </div>
 </div>
-<!--@if(count($products))
-    <ul>
-    @foreach($products as $product)
-        <li>
-            {{ link_to_route('admin.products.edit', $product->title, array($product->id)) }}
-            {{ Form::open(array('route' => array('admin.products.destroy', $product->id), 'method' => 'delete', 'class' => 'destroy')) }}
-            {{ Form::submit('Delete') }}
-            {{ Form::close() }}
-        </li>
-    @endforeach
-    </ul>
-@endif-->
 
 @stop

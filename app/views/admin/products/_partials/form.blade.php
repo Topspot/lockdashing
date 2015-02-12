@@ -80,9 +80,9 @@
     <div class="col-md-offset-3 col-md-9">
         {{ Form::submit('Save',array('class' => 'btn btn-info')) }}
         &nbsp; &nbsp; &nbsp;
-        <button class="btn" type="reset">
-            <i class="icon-undo bigger-110"></i>
-            Reset
-        </button>
+        <a href="/admin/products" class="btn btn-grey">Back</a>
+<!--        <button class="btn" type="reset">            
+            Back
+        </button>-->
     </div>
 </div>

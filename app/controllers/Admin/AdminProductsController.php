@@ -9,7 +9,7 @@ class AdminProductsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$products = Product::all();
+		$products = Product::paginate(10);
 
 		return View::make('admin.products.index', compact('products'));
 	}
@@ -118,6 +118,7 @@ class AdminProductsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
+//            dd($id);exit();
 		Product::destroy($id);
 
 		return Redirect::route('admin.products.index');

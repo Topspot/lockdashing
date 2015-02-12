@@ -9,7 +9,7 @@ class AdminCategoriesController extends \BaseController {
 	 */
 	public function index()
 	{
-		$categories = Category::all();
+		$categories = Category::paginate(10);
 
 		return View::make('admin.categories.index', compact('categories'));
 	}
@@ -99,6 +99,7 @@ class AdminCategoriesController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
+            dd($id);exit;
 		Category::destroy($id);
 
 		return Redirect::route('admin.categories.index');

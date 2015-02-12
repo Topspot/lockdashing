@@ -3,7 +3,7 @@
 @section('content')
 
 <h1>Brands</h1>
-{{ link_to_route('admin.brands.create', 'Create new Brand') }}
+{{ link_to_route('admin.brands.create', 'Create new Brand',array(), array('class' => 'btn btn-inverse')) }}
 <div class="row">
         <div class="col-xs-12">
                 <div class="table-responsive">
@@ -89,6 +89,7 @@
                                         
                                 </tbody>
                         </table>
+                     <?php echo $brands->links(); ?>
                 </div>
         </div>
 </div>
