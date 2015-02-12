@@ -1,7 +1,15 @@
 @extends('laravel-authentication-acl::admin.layouts.base')
 
 @section('content')
+@if(Session::get('message'))
+@if(!empty(Session::get('message')))
 
+<div class="alert alert-block alert-success">
+        {{ Session::get('message') }}
+        {{ Session::put('message', ''); }}
+</div>
+@endif
+@endif
 <h1>Brands</h1>
 {{ link_to_route('admin.brands.create', 'Create new Brand',array(), array('class' => 'btn btn-inverse')) }}
 <button class="btn btn-danger" onclick="multipleDelete('brands');"><i class="icon-trash bigger-130"></i> Multiple Delete</button>

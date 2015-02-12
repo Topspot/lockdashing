@@ -39,7 +39,7 @@ class AdminBrandsController extends \BaseController {
 		}
 
 		Brand::create($data);
-
+                Session::set('message', "Brand is successfully added.");
 		return Redirect::route('admin.brands.index');
 	}
 
@@ -85,9 +85,9 @@ class AdminBrandsController extends \BaseController {
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
-
+                Session::set('message', "Brand is updated successfully.");
 		$brand->update($data);
-
+               
 		return Redirect::route('admin.brands.index');
 	}
 
@@ -99,6 +99,7 @@ class AdminBrandsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
+                Session::set('message', "Brand is deleted successfully.");
 		Brand::destroy($id);
 
 //		return Redirect::route('admin.brands.index');

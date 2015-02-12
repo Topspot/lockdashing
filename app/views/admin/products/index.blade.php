@@ -2,6 +2,15 @@
 
 @section('content')
 
+@if(Session::get('message'))
+@if(!empty(Session::get('message')))
+
+<div class="alert alert-block alert-success">
+        {{ Session::get('message') }}
+        {{ Session::put('message', ''); }}
+</div>
+@endif
+@endif
 <h1>Products</h1>
 {{ link_to_route('admin.products.create', 'Create new Product',array(), array('class' => 'btn btn-inverse')) }}
 <button class="btn btn-danger" onclick="multipleDelete('products');"><i class="icon-trash bigger-130"></i> Multiple Delete</button>

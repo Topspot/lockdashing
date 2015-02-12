@@ -39,7 +39,7 @@ class AdminCategoriesController extends \BaseController {
 		}
 
 		Category::create($data);
-
+                Session::set('message', "Category is successfully added.");
 		return Redirect::route('admin.categories.index');
 	}
 
@@ -85,7 +85,7 @@ class AdminCategoriesController extends \BaseController {
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
-
+                Session::set('message', "Category is updated successfully.");
 		$category->update($data);
 
 		return Redirect::route('admin.categories.index');
@@ -99,7 +99,7 @@ class AdminCategoriesController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-//            dd($id);exit;
+            Session::set('message', "Category is deleted successfully.");
 		Category::destroy($id);
 
 //		return Redirect::route('admin.categories.index');

@@ -50,7 +50,7 @@ class AdminProductsController extends \BaseController {
                 }
               
 		Product::create($data);
-
+                Session::set('message', "Product is successfully added.");
 		return Redirect::route('admin.products.index');
 	}
 
@@ -104,7 +104,7 @@ class AdminProductsController extends \BaseController {
                 }else{
                      unset($data['image']);
                 }
-
+                 Session::set('message', "Product is updated successfully.");
 		$product->update($data);
 
 		return Redirect::route('admin.products.index');
@@ -118,7 +118,11 @@ class AdminProductsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-//            dd($id);exit();
+            $product = Product::find($id);
+            if($product) {               
+              File::delete(public_path().$product->image);
+             }
+              Session::set('message', "Product is deleted successfully.");
 		Product::destroy($id);
 
 //		return Redirect::route('admin.products.index');
