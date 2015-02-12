@@ -99,10 +99,10 @@ class AdminCategoriesController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-            dd($id);exit;
+//            dd($id);exit;
 		Category::destroy($id);
 
-		return Redirect::route('admin.categories.index');
+//		return Redirect::route('admin.categories.index');
 	}
 
 }

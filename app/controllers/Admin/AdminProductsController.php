@@ -121,7 +121,7 @@ class AdminProductsController extends \BaseController {
 //            dd($id);exit();
 		Product::destroy($id);
 
-		return Redirect::route('admin.products.index');
+//		return Redirect::route('admin.products.index');
 	}
 
 }

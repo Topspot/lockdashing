@@ -101,7 +101,7 @@ class AdminBrandsController extends \BaseController {
 	{
 		Brand::destroy($id);
 
-		return Redirect::route('admin.brands.index');
+//		return Redirect::route('admin.brands.index');
 	}
 
 }

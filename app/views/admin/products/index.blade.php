@@ -4,7 +4,7 @@
 
 <h1>Products</h1>
 {{ link_to_route('admin.products.create', 'Create new Product',array(), array('class' => 'btn btn-inverse')) }}
-<button class="btn btn-danger" onclick="multipleDelete('Products');"><i class="icon-trash bigger-130"></i> Multiple Delete</button>
+<button class="btn btn-danger" onclick="multipleDelete('products');"><i class="icon-trash bigger-130"></i> Multiple Delete</button>
 <div class="row">
         <div class="col-xs-12">
                 <div class="table-responsive">
@@ -13,7 +13,7 @@
                                         <tr>
                                                 <th class="center">
                                                         <label>
-                                                                <input type="checkbox" class="ace" />
+                                                                <input type="checkbox" class="ace" id="selectall" />
                                                                 <span class="lbl"></span>
                                                         </label>
                                                 </th>
@@ -35,7 +35,7 @@
                                      <tr data-id="<?php echo $product->id ?>">
                                                 <td class="center">
                                                         <label>
-                                                                <input type="checkbox" class="ace" />
+                                                                <input type="checkbox" class="ace checkbox1"/>
                                                                 <span class="lbl"></span>
                                                         </label>
                                                 </td>
@@ -59,7 +59,7 @@
                                                                         <i class="icon-pencil bigger-130"></i>
                                                                 </a>
 
-                                                                <a class="red" href="#" onclick="openModal('Products','<?php echo $product->id; ?>','<?php echo $product->title; ?>');">
+                                                                <a class="red" href="#" onclick="openModal('products','<?php echo $product->id; ?>','<?php echo $product->title; ?>');">
                                                                         <i class="icon-trash bigger-130"></i>
                                                                 </a>
 <!--                                                                         <button class="red" onclick="openModal('Products','<?php echo $product->id; ?>','<?php echo $product->title; ?>');">

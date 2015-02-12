@@ -4,6 +4,7 @@
 
 <h1>Brands</h1>
 {{ link_to_route('admin.brands.create', 'Create new Brand',array(), array('class' => 'btn btn-inverse')) }}
+<button class="btn btn-danger" onclick="multipleDelete('brands');"><i class="icon-trash bigger-130"></i> Multiple Delete</button>
 <div class="row">
         <div class="col-xs-12">
                 <div class="table-responsive">
@@ -12,7 +13,7 @@
                                         <tr>
                                                 <th class="center">
                                                         <label>
-                                                                <input type="checkbox" class="ace" />
+                                                                <input type="checkbox" class="ace" id="selectall" />
                                                                 <span class="lbl"></span>
                                                         </label>
                                                 </th>
@@ -21,13 +22,13 @@
                                         </tr>
                                 </thead>
 
-                                <tbody>
+                                <tbody class="product-table">
                                     @if(count($brands))
                                      @foreach($brands as $brand)
-                                        <tr>
+                                        <tr data-id="<?php echo $brand->id ?>">
                                                 <td class="center">
                                                         <label>
-                                                                <input type="checkbox" class="ace" />
+                                                                <input type="checkbox" class="ace checkbox1" />
                                                                 <span class="lbl"></span>
                                                         </label>
                                                 </td>
@@ -44,7 +45,7 @@
                                                                         <i class="icon-pencil bigger-130"></i>
                                                                 </a>
 
-                                                                <a class="red" href="/admin/brands/destroy/<?php echo $brand->id ?>">
+                                                                <a class="red" href="#" onclick="openModal('brands','<?php echo $brand->id; ?>','<?php echo $brand->name; ?>');">
                                                                         <i class="icon-trash bigger-130"></i>
                                                                 </a>
                                                         </div>
